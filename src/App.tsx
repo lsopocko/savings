@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import Bucket from './bucket/Bucket';
+import Faucet from './faucet/Faucet';
 
-function App() {
+interface AppProps {
+    className?: string;
+}
+
+
+function App({ className }: AppProps) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={className}>
+        <Faucet></Faucet>
+        <Bucket></Bucket>
     </div>
   );
 }
 
-export default App;
+const styledApp = styled(App)`
+    margin: auto;
+    padding: 20px;
+    width: 600px;
+`;
+
+export default styledApp;
