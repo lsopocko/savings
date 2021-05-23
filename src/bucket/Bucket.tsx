@@ -1,10 +1,19 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { SavingsState } from '../redux/state';
 
 interface BucketProps {
     className?: string;
 }
 
 function Bucket({ className }: BucketProps) {
+    const waterLevel = useSelector((state: SavingsState) => state.water.level);
+
+    useEffect(() => {
+        console.log('waterLevel', waterLevel);
+    }, [waterLevel]);
+
     return (
       <div className={className}>
           <span className="goal"></span>

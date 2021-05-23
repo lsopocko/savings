@@ -1,19 +1,27 @@
 import { Action } from 'redux'
 
-  const initialState = {
-    level: 0
-  }
+export interface WaterSlice {
+    level: 0;
+}
 
-  export default function waterReducer(state = initialState, action: Action<any>) {
+const initialState = {
+    level: 0
+}
+
+export class CalculateWaterLevelAction implements Action {
+    type: string = 'water/recalculateLevel';
+}
+
+export default function waterReducer(state = initialState, action: CalculateWaterLevelAction) {
     switch (action.type) {
-      case 'water/riseLevel': {
+      case 'water/recalculateLevel': {
+        //   console.log('water reducer', state);
         return {
           // Again, one less level of nesting to copy
-          ...state,
-          level: state.level++,
+          ...state
         }
       }
       default:
         return state
     }
-  }
+}
