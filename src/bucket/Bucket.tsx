@@ -14,13 +14,16 @@ function Bucket({ className }: BucketProps) {
         console.log('waterLevel', waterLevel);
     }, [waterLevel]);
 
+    const divStyle = {
+        height: `${waterLevel}%`
+    };
+
     return (
       <div className={className}>
-          <span className="goal"></span>
-          <span className="crack">
-            <span className="stream"></span>
-          </span>
-          <span className="water"></span>
+          <span className="goal">350 000 zł</span>
+          <span className="crack"></span>
+          <span className="crack"></span>
+          <span className="water" style={divStyle}></span>
       </div>
     );
 }
@@ -38,11 +41,24 @@ const styledBucket = styled(Bucket)`
     position: relative;
 
     .goal {
-        border-top: 2px dashed #fff;
-        width: 30px;
         position: absolute;
-        left:0;
+        left: -82px;
         top: 30px;
+        z-index: 10;
+        color: #fff;
+        font-weight: 500;
+        padding-bottom: 5px;
+
+        &:before {
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -1px;
+            left: 110%;
+            content: '';
+            width: 30px;
+            border-top: 2px dashed #ff0000;
+        }
     }
 
     .stream {
@@ -65,6 +81,23 @@ const styledBucket = styled(Bucket)`
         border: 2px solid #fff;
         border-radius: 50%;
         z-index: 20;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 100px;
+            background: #3e9eff;
+            top:50%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+        }
+    }
+
+    .crack + .crack {
+        bottom: 15px;
+        right: 130px;
     }
 
     .water {
@@ -72,7 +105,6 @@ const styledBucket = styled(Bucket)`
         bottom: 0;
         background: #3e9eff;
         width: 100%;
-        height: 50px;
         border-radius: 10px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;

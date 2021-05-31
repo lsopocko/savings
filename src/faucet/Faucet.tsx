@@ -44,6 +44,9 @@ function Faucet({ className }: FaucetProps) {
           <span className="stream"></span>
           <img src="faucet.svg" alt=""/>
           <form>
+                <p>
+                    Add your monthly income and all your monthly expenses to visualize when you reach your goal - <b>350k</b>
+                </p>
                 <h2>Add income</h2>
                 <input type="text" name="incomeTitle" placeholder="Title" onChange={handleIncomeTitleChange}/>
                 <input type="number" name="income" placeholder="Amount" onChange={handleIncomeChange}/>
@@ -82,6 +85,11 @@ const styledFaucet = styled(Faucet)`
         bottom: 0;
         border-left: 10px solid #ffffff;
         padding-left: 30px;
+
+        p {
+            color: #ffffff;
+            font-size: 17px;
+        }
     }
 
     input[type=text],

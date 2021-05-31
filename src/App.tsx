@@ -17,7 +17,7 @@ function App({ className }: AppProps) {
     useEffect(() => {
         console.log('income', income);
         console.log('expenditure', expenditure);
-        dispatch({type: 'water/recalculateLevel' });
+        dispatch({type: 'water/recalculateLevel', income, expenditure });
     }, [dispatch, income, expenditure]);
 
 

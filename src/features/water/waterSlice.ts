@@ -10,15 +10,28 @@ const initialState = {
 
 export class CalculateWaterLevelAction implements Action {
     type: string = 'water/recalculateLevel';
+    income: any;
+    expenditure: any;
 }
 
 export default function waterReducer(state = initialState, action: CalculateWaterLevelAction) {
     switch (action.type) {
       case 'water/recalculateLevel': {
-        //   console.log('water reducer', state);
+
+        const expenditures = action?.expenditure?.expenditures?.reduce((prev: any, curr: any) => {
+            console.log('prev: any, curr', prev, curr);
+            if (prev.amount) {
+                return prev.amount + curr.amount;
+            }
+            return prev + curr.amount;
+        }, 0);
+
+        console.log('expenditures', expenditures);
+
         return {
           // Again, one less level of nesting to copy
-          ...state
+          ...state,
+          level: action.income.income - expenditures
         }
       }
       default:
